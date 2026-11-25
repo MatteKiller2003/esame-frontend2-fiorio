@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router'
 import './Header.css'
 
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
                 <div className="header__brand">Movie App</div>
             </div>
             <nav className="header__nav">
-                <a href="index.html">Home / Elenco</a>
+                <Link to="/">Home / Elenco</Link>
             </nav>
         </div>
 

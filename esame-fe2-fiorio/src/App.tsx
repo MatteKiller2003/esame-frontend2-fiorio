@@ -1,11 +1,12 @@
-import Header from "./components/Header"
+
 import './App.css'
+import Shell from "./components/Shell"
 
 function App() {
 
   return (
     <>
-    <Header />
+    <Shell />
     </>
   )
 }

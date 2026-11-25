@@ -1,0 +1,16 @@
+.page-title {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.page-sub {
+  margin: 0 0 20px;
+  color: #555;
+  font-size: 12px;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}

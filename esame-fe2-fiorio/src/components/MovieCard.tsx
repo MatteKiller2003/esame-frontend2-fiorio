@@ -1,10 +1,10 @@
 
 import { Link } from 'react-router'
-import type { MovieDetail } from '../types/Type'
+import type { MovieDetailSummary } from '../types/Type'
 import './MovieCard.css'
 
 type Props = {
-    movie: MovieDetail
+    movie: MovieDetailSummary
 }
 
 const MovieCard = ({ movie }: Props) => {

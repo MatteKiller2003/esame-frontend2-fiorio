@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react"
 import { getMovies } from "../api/api"
-import type { MovieDetail } from "../types/Type"
+import type { MovieResponse, MovieDetailSummary } from "../types/Type"
 import MovieCard from "./MovieCard"
-import './MoviePage.css'
+import './MoviesPage.css'
 
-const MoviePage = () => {
+const MoviesPage = () => {
 
-    const [movies, setMovies] = useState<MovieDetail[]>([])
+    const [movies, setMovies] = useState<MovieDetailSummary[]>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
 
     const inizializeMovieList = async () => {
       try {
-        const data = await getMovies()
-        setMovies(data)
+        const data : MovieResponse = await getMovies()
+        setMovies(data.results)
       } catch (err) {
         setError(err instanceof Error ? err.message : "Si è verificato un errore nel caricamento.")
       } finally {
         setLoading(false)
       }
     }
+    
+    document.title = `WireFrame - Elenco Movies`
 
     useEffect(() => {
         inizializeMovieList()
@@ -39,7 +41,7 @@ const MoviePage = () => {
 
             {error && <p style={{ color: "red" }}>Errore: {error}</p>}
 
-            {!loading && !error && (
+            
             <div className="movie-grid">
                 
                 {movies.map((movie) => (
@@ -47,10 +49,10 @@ const MoviePage = () => {
                 ))}
 
             </div>
-            )}
+            
 
         </>
     )
 }
 
-export default MoviePage
+export default MoviesPage

@@ -17,7 +17,7 @@ const MovieDetailPage = () => {
     const inizializeMovie = async () => {
         try {
           if (!id) return
-          const data = await getMovieById(id)
+          const data : MovieDetail = await getMovieById(id)
           setMovie(data)
         } catch (err) {
           setError(err instanceof Error ? err.message : "Errore durante il caricamento del dettaglio.")
@@ -25,6 +25,10 @@ const MovieDetailPage = () => {
         } finally {
           setLoading(false)
         }
+    }
+
+    if(id) {
+        document.title = `WireFrame - Movie ${id}`
     }
 
     useEffect(() => {
@@ -38,12 +42,9 @@ const MovieDetailPage = () => {
 
             <Link to="/" className="back-link">← Torna all’elenco</Link>
 
-
             {loading && <p>Caricamento dettagli...</p>}
             {error && <p style={{ color: "red" }}>Errore: {error}</p>}
-            {!loading && !error && movie && <MovieDetailCard movie={movie} />}
-
-
+            {movie && <MovieDetailCard movie={movie} />}
 
         </>
 
